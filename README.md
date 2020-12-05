@@ -3,6 +3,8 @@ The PD2 Trade UI can be found at http://pd2trade.com.
 This is an UNOFFICIAL trade site of https://projectdiablo2.com
 . Hoping to become the official trade site of Project Diablo 2.
 
+** WARNING - USE OF THIS WEBSITE CAN AND WILL RESULT IN A PERMANENT BAN FROM Project Diablo 2 SERVERS WHILE IN UNOFFICIAL STATE. **
+
 ## Contributing
 1) Fork the repository to your own github account - Working branch is `develop`
 2) Push code to your fork
