@@ -1,0 +1,93 @@
+@import '../../../styles/animations';
+
+.collapsed {
+    float: right !important;
+}
+
+.avatar {
+    display: inline-block;
+
+    img {
+        width: 25px;
+        max-height: 25px;
+    }
+}
+
+.flag-icon {
+    max-width: 30px;
+    height: 20px !important;
+}
+
+.dropdown-menu {
+    white-space: nowrap;
+    margin-top: -1px !important;
+    text-align: left;
+}
+
+.nav-product-logo {
+    max-width: 32px;
+    max-height: 32px;
+    margin-right: 10px;
+}
+
+@media (min-width: 992px) {
+    .animate {
+        animation-duration: 0.15s;
+        animation-fill-mode: both;
+    }
+}
+
+.cart-area {
+    img {
+        margin-top: -5px;
+        height: 24px;
+        width: 24px;
+    }
+
+    .nav-link {
+        display: inline-block !important;
+    }
+}
+
+.user-menu {
+    width: 190px;
+    left: -50px;
+
+    i {
+        margin-right: 10px;
+    }
+}
+
+.currency-menu {
+    letter-spacing: 1.2px !important;
+    left: -250px !important;
+    min-width: 340px !important;
+}
+
+.nav-link {
+    color: #fff !important;
+}
+
+.navbar-toggler {
+    margin-right: 30px;
+}
+
+.nav-item {
+    text-transform: uppercase;
+    color: #fff !important;
+    margin-top: 4px;
+    letter-spacing: 2px;
+    margin-right: 30px;
+}
+
+.navbar {
+    background: rgba(0,0,0,0.3);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #fff !important;
+    border-bottom: 1px solid #707070;
+}
+
+.navbar-nav {
+    cursor: pointer;
+}

@@ -1,0 +1,50 @@
+@import '~bootstrap/scss/bootstrap';
+@import '~devextreme/dist/css/dx.common.css';
+@import '~devextreme/dist/css/dx.material.purple.dark.compact.css';
+@import '~@aurelia-mdc-web/all/mdc-all.scss';
+@import '~toastr/build/toastr.min.css';
+@import 'fontawesome';
+@import 'animations';
+@import 'mdc-overrides';
+@import 'dx-overrides';
+@import 'font-family';
+
+body {
+    font-family: 'DiabloLight', var(--bs-font-sans-serif);
+    color: rgba(255, 255, 255, 1);
+    padding: 0;
+    background: rgb(34, 37, 38);
+}
+
+.font-secondary {
+    font-family: 'DiabloHeavy', var(--bs-font-sans-serif);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.toast-top-right {
+    top: 100px !important;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+.toast-info {
+    background-color: #87ceeb !important;
+    color: black !important;
+}
+
+.toast-success {
+    background-color: #90ee90 !important;
+    color: black !important;
+}
+
+.toast-error {
+    background-color: #ff4500 !important;
+    color: black !important;
+}

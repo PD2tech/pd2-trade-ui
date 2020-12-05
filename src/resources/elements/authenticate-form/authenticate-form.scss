@@ -1,0 +1,23 @@
+#authenticate-form{
+
+    .login-container{
+        background-color: rgba(0, 0, 0, 0.2);
+        border: 1px solid BLACK;
+        border-radius: 4px;
+        max-width: 1200px;
+        width: 80%;
+        margin: auto;
+        padding: 4rem;
+        box-shadow: 0 0 20px rgba(44, 45, 51, 0.8);
+
+        .register{
+            color: rgba(25, 135, 83, 0.9);
+            text-decoration: none;
+        }
+    }
+
+    .signin-button {
+        height: 35px;
+    }
+}
+

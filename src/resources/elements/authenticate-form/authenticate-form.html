@@ -1,0 +1,68 @@
+<template>
+    <div id="authenticate-form">
+        <div class="login-container" if.bind="!registering">
+            <h1 class="text-center mb-5">Sign In</h1>
+            <error-list errors.bind="errors"></error-list>
+            <form id="sign-in" submit.delegate="signin()">
+                <div class="error-group">
+                    <mdc-text-field
+                        class="w-100 mb-3"
+                        label="Email"
+                        value.bind="user.email & validate"
+                        type="email"
+                    ></mdc-text-field>
+                </div>
+                <div class="error-group">
+                    <mdc-text-field
+                        class="w-100"
+                        label="Password"
+                        value.bind="user.password & validate"
+                        type="password"
+                    ></mdc-text-field>
+                </div>
+                <div class="text-center mt-3 mb-3">
+                    <button mdc-button raised class="signin-button" type="submit">Sign In</button>
+                </div>
+            </form>
+            <p class="text-center subtext text-regular">Forgot your password?</p>
+            <p class="text-center subtext text-regular">Need an account? <span class="register pl-1 cursor-pointer" click.delegate="registering = true">Register</span></p>
+        </div>
+
+        <div class="login-container" if.bind="registering">
+            <h1 class="text-center mb-5">Register</h1>
+            <error-list errors.bind="errors"></error-list>
+            <form id="register" submit.delegate="register()">
+                <div class="error-group">
+                    <mdc-text-field
+                        class="w-100 mb-3"
+                        label="Email"
+                        value.bind="user.email & validate"
+                        type="email"
+                    ></mdc-text-field>
+                </div>
+                <div class="error-group">
+                    <mdc-text-field
+                        class="w-100 mb-3"
+                        label="Password"
+                        value.bind="user.password & validate"
+                        type="password"
+                    ></mdc-text-field>
+                </div>
+                <div class="error-group">
+                    <mdc-text-field
+                        class="w-100"
+                        label="Confirm Password"
+                        value.bind="user.confirmPassword & validate"
+                        type="password"
+                    ></mdc-text-field>
+                </div>
+                <div class="text-center mt-3 mb-3">
+                    <button mdc-button raised class="signin-button" type="submit">Register</button>
+                </div>
+            </form>
+            <div class="text-center subtext register">
+                <span click.delegate="registering = false" class="cursor-pointer">Login Instead</span>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,22 @@
+{
+    "extends": ["stylelint-config-sass-guidelines"],
+    "rules": {
+        "indentation": [
+            4,
+            {
+                "message": "Please use 4 spaces for indentation.",
+                "severity": "warning"
+            }
+        ],
+        "selector-max-id": [
+            2,
+            {
+                "ignoreFunctions": ["not"]
+            }
+        ],
+        "selector-max-compound-selectors": 4,
+        "order/properties-alphabetical-order": false,
+        "max-nesting-depth": 4,
+        "no-duplicate-selectors": true
+    }
+}

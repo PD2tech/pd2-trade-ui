@@ -1,0 +1,151 @@
+<template>
+    <div id="home" class="mt-5 pl-5 pr-5">
+        <h3 class="heading text-center">
+            Trade
+        </h3>
+        <div class="trade-container">
+            <div class="search-area">
+                <div class="row g-0">
+                    <div class="col-8">
+                        <div class="row g-0">
+                            <div class="col-11">
+                                <mdc-text-field
+                                    class="w-100"
+                                    label="Item Name"
+                                    value.bind="nameSearch"
+                                    change.delegate="nameChanged() & debounce:500"
+                                ></mdc-text-field>
+                            </div>
+                            <div class="col">
+                                <button mdc-icon-button icon="search"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <mdc-select
+                            label="Season"
+                            value.bind="selectedSeason"
+                            anchor-margin.bind="{top: 10}"
+                            outlined.bind="standardSelectOutlined"
+                            class="w-100"
+                        >
+                            <mdc-list>
+                                <mdc-list-item></mdc-list-item>
+                                <mdc-list-item repeat.for="season of seasons" value.bind="season">${season}</mdc-list-item>
+                            </mdc-list>
+                        </mdc-select>
+                    </div>
+                    <div class="col text-right">
+                        <button mdc-button raised class="h-100" click.delegate="createOffer()">Create Offer</button>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-area row">
+                <div class="filter-options-area row" if.bind="filtersOpen">
+                    <div class="col-6">
+                        <div class="filter-heading">
+                            Type Filters
+                        </div>
+                        <mdc-select
+                            label="Item Category"
+                            value.bind="selectedCategory"
+                            anchor-margin.bind="{top: 10}"
+                            outlined.bind="standardSelectOutlined"
+                            class="w-100 mb-3"
+                        >
+                            <mdc-list>
+                                <mdc-list-item></mdc-list-item>
+                                <mdc-list-item repeat.for="category of itemCategories" value.bind="category">${category | pascalCase}</mdc-list-item>
+                            </mdc-list>
+                        </mdc-select>
+                        <mdc-select
+                            label="Item Rarity"
+                            value.bind="selectedRarity"
+                            anchor-margin.bind="{top: 10}"
+                            outlined.bind="standardSelectOutlined"
+                            class="w-100"
+                        >
+                            <mdc-list>
+                                <mdc-list-item></mdc-list-item>
+                                <mdc-list-item repeat.for="rarity of itemRarities" value.bind="rarity">${rarity}</mdc-list-item>
+                            </mdc-list>
+                        </mdc-select>
+
+                        <div class="filter-heading mt-3">
+                            Requirement Filters
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <min-max-selector label="Level" min.two-way="levelMin" max.two-way="levelMax"></min-max-selector>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <min-max-selector label="Strength" min.two-way="strengthMin" max.two-way="strengthMax"></min-max-selector>
+                            </div>
+                            <div class="col-6">
+                                <min-max-selector label="Dexterity" min.two-way="dexMin" max.two-way="dexMax"></min-max-selector>
+                            </div>
+                        </div>
+
+                        <div class="filter-heading mt-3">
+                            Trade Filters
+                        </div>
+                        <mdc-text-field
+                            class="w-100"
+                            label="Seller Account Name"
+                            value.bind="sellerAccountName"
+                        ></mdc-text-field>
+                    </div>
+                    <div class="col-6">
+                        <div class="filter-heading">
+                            Stat Filters
+                        </div>
+                        <stat-selector></stat-selector>
+                        <div class="mt-3" repeat.for="stat of selectedStats">
+                            <min-max-selector
+                                full.bind="true"
+                                label.bind="stat.displayName"
+                                min.two-way="stat.minValue"
+                                max.two-way="stat.maxValue"
+                                remove-function.call="removeItemStat(stat)"
+                            ></min-max-selector>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-buttons-area mt-3 row">
+                    <div class="col-sm-2 col-md-4"></div>
+                    <div class="col-5 col-md-4 text-center">
+                        <button mdc-button raised
+                                class="h-100"
+                                click.delegate="search()">
+                            Search
+                        </button>
+                    </div>
+                    <div class="col-5 col-md-4 text-right">
+                        <button mdc-button raised
+                                class="h-100 d-inline mr-4 button-secondary"
+                                click.delegate="clearFilters()">
+                            Clear Filters
+                        </button>
+                        <button mdc-button raised
+                                class="h-100 d-inline button-secondary"
+                                if.bind="filtersOpen"
+                                click.delegate="filtersOpen = false">
+                            Close Filters
+                        </button>
+                        <button mdc-button raised
+                                class="h-100 d-inline button-secondary"
+                                if.bind="!filtersOpen"
+                                click.delegate="filtersOpen = true">
+                            Open Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="result-container">
+
+        </div>
+    </div>
+</template>

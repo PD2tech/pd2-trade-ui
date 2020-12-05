@@ -1,0 +1,8 @@
+<template bindable="errors">
+    <div class="alert alert-danger" repeat.for="key of errors | keys">
+        <strong>
+            ${key | properCase}
+        </strong>
+        ${errors[key].message}
+    </div>
+</template>

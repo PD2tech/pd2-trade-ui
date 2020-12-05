@@ -1,0 +1,29 @@
+<template>
+    <nav id="nav" class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="text-center navbar-brand hidden-sm">
+            <a href="home"><-insert-dope-logo-here-></a>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="home">Home</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav navbar-right">
+                <li class="nav-item" if.bind="user">
+                    <a class="nav-link" data-toggle="collapse" href="manage-trades">Manage Trades</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="login" click.delegate="handleLogoutClick()">
+                        ${user ? 'Logout' : 'Login'}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</template>

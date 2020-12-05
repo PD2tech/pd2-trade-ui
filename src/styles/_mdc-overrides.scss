@@ -1,0 +1,57 @@
+html {
+    --mdc-theme-primary: rgb(43, 54, 31, 1) !important;
+    --mdc-theme-surface: rgb(43, 54, 71, 1) !important;
+}
+
+.button-secondary {
+    background-color: rgb(53, 74, 91, 1) !important;
+}
+
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px transparent inset;/*your box-shadow*/
+    -webkit-text-fill-color: #333;
+}
+
+.mdc-select__menu .mdc-list .mdc-list-item--selected, .mdc-select__menu .mdc-list .mdc-list-item--activated {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.mdc-list-item {
+    height: 36px;
+}
+
+.mdc-button {
+    font-family: 'DiabloLight', var(--bs-font-sans-serif);
+}
+
+.mdc-menu .mdc-list {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.mdc-select:not(.mdc-select--disabled) .mdc-select__dropdown-icon {
+    fill: rgba(255, 255, 255, 1);
+}
+
+.mdc-text-field--outlined,
+.mdc-select--filled .mdc-select__anchor,
+.mdc-text-field--filled {
+    height: 46px;
+}
+
+.mdc-select:not(.mdc-select--disabled).mdc-select--focused .mdc-floating-label,
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label,
+.mdc-select:not(.mdc-select--disabled) .mdc-floating-label{
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input,
+.mdc-select:not(.mdc-select--disabled) .mdc-select__selected-text {
+    caret-color: #fff;
+    color: #fff;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled),
+.mdc-select--filled:not(.mdc-select--disabled) .mdc-select__anchor{
+    background: rgba(0, 0, 0, 0.2);
+}
+

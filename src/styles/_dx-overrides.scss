@@ -1,0 +1,16 @@
+.dx-texteditor.dx-editor-filled.dx-state-hover,
+.dx-texteditor.dx-editor-filled {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.dx-selectbox-popup-wrapper .dx-list {
+    background: rgba(43, 54, 71, 1);
+}
+
+.dx-tab.dx-tab-selected, .dx-tab.dx-tab-selected .dx-icon {
+    color: #fff;
+}
+
+.dx-tab.dx-tab-selected::before {
+    background-color: #fff;
+}

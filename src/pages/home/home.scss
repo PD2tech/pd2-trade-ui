@@ -1,0 +1,23 @@
+#home {
+    h4 {
+        font-family: 'DiabloHeavy', var(--bs-font-sans-serif);
+        margin-bottom: 30px;
+    }
+
+    .trade-container {
+        background: rgba(0,0,0,0.3);
+    }
+
+    .filter-options-area {
+        padding: 20px;
+    }
+
+    .filter-heading {
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .filter-buttons-area {
+        height: 45px;
+    }
+}

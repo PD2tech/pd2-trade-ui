@@ -1,0 +1,105 @@
+<template>
+    <div id="create-rare-item" class="row">
+        <div class="col-6">
+            <div class="row">
+                <div class="col-12">
+                    <mdc-text-field
+                        class="w-100 mb-4"
+                        label="Name"
+                        value.bind="item.name"
+                        outlined.bind="true"
+                    ></mdc-text-field>
+                </div>
+                <div class="col-6 mb-3">
+                    <mdc-select
+                        label="Item Category"
+                        value.bind="selectedCategory"
+                        anchor-margin.bind="{top: 10}"
+                        outlined.bind="standardSelectOutlined"
+                        class="w-100 mb-3"
+                    >
+                        <mdc-list>
+                            <mdc-list-item></mdc-list-item>
+                            <mdc-list-item repeat.for="category of itemCategories" value.bind="category">${category | pascalCase}</mdc-list-item>
+                        </mdc-list>
+                    </mdc-select>
+                </div>
+                <div class="col-6 mb-3">
+                    <mdc-select
+                        label="Item Rarity"
+                        value.bind="selectedRarity"
+                        anchor-margin.bind="{top: 10}"
+                        outlined.bind="standardSelectOutlined"
+                        class="w-100"
+                    >
+                        <mdc-list>
+                            <mdc-list-item></mdc-list-item>
+                            <mdc-list-item repeat.for="rarity of itemRarities" value.bind="rarity">${rarity}</mdc-list-item>
+                        </mdc-list>
+                    </mdc-select>
+                </div>
+                <div class="col-4">
+                    <mdc-text-field
+                        class="w-100 mb-4"
+                        type="number"
+                        label="Strength Requirement"
+                        value.bind="item.strengthRequirement"
+                        outlined.bind="true"
+                    ></mdc-text-field>
+                </div>
+                <div class="col-4">
+                    <mdc-text-field
+                        class="w-100 mb-4"
+                        type="number"
+                        label="Dexterity Requirement"
+                        value.bind="item.dexterityRequirement"
+                        outlined.bind="true"
+                    ></mdc-text-field>
+                </div>
+                <div class="col-4">
+                    <mdc-text-field
+                        class="w-100 mb-4"
+                        type="number"
+                        label="Level Requirement"
+                        value.bind="item.levelRequirement"
+                        outlined.bind="true"
+                    ></mdc-text-field>
+                </div>
+                <div class="col-4">
+                    <mdc-text-field
+                        clacc="w-100 mb-4"
+                        type="number"
+                        label="Item Level"
+                        value.bind="item.itemLevel"
+                        outlined.bind="true"
+                    ></mdc-text-field>
+                </div>
+                <div class="col-4">
+                    <mdc-text-field
+                        clacc="w-100 mb-4"
+                        type="number"
+                        label="Total Sockets"
+                        value.bind="item.totalSockets"
+                        outlined.bind="true"
+                    ></mdc-text-field>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <stat-selector></stat-selector>
+            <div class="row mt-3" repeat.for="stat of stats">
+                <div class="col-8">
+                    ${stat.displayName}
+                </div>
+                <div class="col-4">
+                    <mdc-text-field
+                        type="number"
+                        label="Value"
+                        value.bind="stat.value"
+                        outlined.bind="true"
+                    ></mdc-text-field>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
