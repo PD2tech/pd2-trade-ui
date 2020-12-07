@@ -25,7 +25,11 @@ export class CreateRareItem {
         itemLevel: 1,
         type: '',
         category: '',
-        totalSockets: 0
+        totalSockets: 0,
+        minDamage: 0,
+        maxDamage: 0,
+        durability: 0,
+        maxDurability: 0
     }
 
     stats = [];
@@ -41,5 +45,10 @@ export class CreateRareItem {
                 this.stats.push(stat)
             }
         }
+    }
+
+    removeItemStat(stat) {
+        let index = this.stats.findIndex(x => x.id === stat.id);
+        this.stats.splice(index, 1);
     }
 }
