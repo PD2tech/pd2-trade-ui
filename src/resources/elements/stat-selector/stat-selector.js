@@ -5,6 +5,7 @@ import ArrayStore from "devextreme/data/array_store";
 
 @inject(ItemStatService)
 export class StatSelector {
+    @bindable placeholder = '+ Add Stat Filter';
     bind(bindingContext) {
         this.parent = bindingContext;
     }
@@ -31,7 +32,7 @@ export class StatSelector {
                 data: this.originalStats,
                 key: "id"
             }),
-            placeholder: '+ Add Stat Filter',
+            placeholder: this.placeholder,
             displayExpr: "displayName",
             searchEnabled: true,
             stylingMode: 'filled',

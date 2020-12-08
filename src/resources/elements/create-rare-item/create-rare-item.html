@@ -13,10 +13,11 @@
                 <div class="col-6 mb-3">
                     <mdc-select
                         label="Item Category"
-                        value.bind="selectedCategory"
+                        value.bind="item.category"
                         anchor-margin.bind="{top: 10}"
                         outlined.bind="standardSelectOutlined"
                         class="w-100 mb-3"
+                        change.delegate="handleCategoryChange()"
                     >
                         <mdc-list>
                             <mdc-list-item></mdc-list-item>
@@ -26,19 +27,47 @@
                 </div>
                 <div class="col-6 mb-3">
                     <mdc-select
-                        label="Item Rarity"
-                        value.bind="selectedRarity"
+                        label="Item Subcategory"
+                        value.bind="item.subCategory"
                         anchor-margin.bind="{top: 10}"
                         outlined.bind="standardSelectOutlined"
                         class="w-100"
+                        if.bind="item.category"
                     >
                         <mdc-list>
                             <mdc-list-item></mdc-list-item>
-                            <mdc-list-item repeat.for="rarity of itemRarities" value.bind="rarity">${rarity}</mdc-list-item>
+                            <mdc-list-item repeat.for="subCategory of subCategories" value.bind="subCategory">${subCategory}</mdc-list-item>
                         </mdc-list>
                     </mdc-select>
                 </div>
                 <div class="col-6">
+                    <mdc-text-field
+                        class="w-100 mb-4"
+                        type="number"
+                        label="Durability"
+                        value.bind="item.durability"
+                        outlined.bind="true"
+                    ></mdc-text-field>
+                </div>
+                <div class="col-6">
+                    <mdc-text-field
+                        class="w-100 mb-4"
+                        type="number"
+                        label="Max Durability"
+                        value.bind="item.maxDurability"
+                        outlined.bind="true"
+                    ></mdc-text-field>
+                </div>
+                <div class="col-4">
+                    <mdc-text-field
+                        class="w-100 mb-4"
+                        type="number"
+                        label="Defence (After Modifiers)"
+                        value.bind="item.defence"
+                        outlined.bind="true"
+                    ></mdc-text-field>
+                </div>
+                <div class="col-4">
                     <mdc-text-field
                         class="w-100 mb-4"
                         type="number"
@@ -47,12 +76,12 @@
                         outlined.bind="true"
                     ></mdc-text-field>
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                     <mdc-text-field
                         class="w-100 mb-4"
                         type="number"
                         label="Max Damage"
-                        value.bind="item.totalSockets"
+                        value.bind="item.maxDamage"
                         outlined.bind="true"
                     ></mdc-text-field>
                 </div>
@@ -101,29 +130,11 @@
                         outlined.bind="true"
                     ></mdc-text-field>
                 </div>
-                <div class="col-4">
-                    <mdc-text-field
-                        class="w-100 mb-4"
-                        type="number"
-                        label="Durability"
-                        value.bind="item.durability"
-                        outlined.bind="true"
-                    ></mdc-text-field>
-                </div>
-                <div class="col-4">
-                    <mdc-text-field
-                        class="w-100 mb-4"
-                        type="number"
-                        label="Max Durability"
-                        value.bind="item.maxDurability"
-                        outlined.bind="true"
-                    ></mdc-text-field>
-                </div>
             </div>
         </div>
         <div class="col-6">
-            <stat-selector></stat-selector>
-            <div class="row mt-3" repeat.for="stat of stats">
+            <stat-selector placeholder="+ Add Stat"></stat-selector>
+            <div class="row mt-3" repeat.for="stat of item.stats">
                 <div class="col-7">
                     <span class="d-flex align-items-center h-100">${stat.displayName | statReplacer:stat.value}</span>
                 </div>
@@ -141,6 +152,9 @@
                     </span>
                 </div>
             </div>
+        </div>
+        <div class="item-area">
+            <item-viewer item.bind="item"></item-viewer>
         </div>
     </div>
 </template>

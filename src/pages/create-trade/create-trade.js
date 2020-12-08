@@ -1,15 +1,19 @@
 import {inject} from 'aurelia-framework';
 import {SessionService} from 'services/session-service';
 import {Router} from 'aurelia-router';
+import {ItemService} from 'services/item-service';
 import toastr from 'toastr'
 import './create-trade.scss';
 import Tabs from "devextreme/ui/tabs";
 
-@inject(SessionService, Router)
+@inject(SessionService, Router, ItemService)
 export class CreateTrade {
 
     tabsElement;
     tabs = [
+        {
+            text: 'Import Copied Item'
+        },
         {
             text: 'Import from Stash'
         },
@@ -20,10 +24,14 @@ export class CreateTrade {
             text: 'Rare'
         }];
     currentTab = this.tabs[0].text;
+    accountName;
+    rareItem;
+    showPricing = false;
 
-    constructor(sessionService, router) {
+    constructor(sessionService, router, itemService) {
         this.sessionService = sessionService;
         this.router = router;
+        this.itemService = itemService;
         this.notification = toastr;
     }
 
@@ -35,12 +43,14 @@ export class CreateTrade {
         }
     }
 
-    attached() {
+    async attached() {
         new Tabs(this.tabsElement, {
             items: this.tabs,
             selectedIndex: 0,
             onItemClick: this.handleTabUpdate
         });
+
+        this.currencyItems = await this.itemService.getCurrencyItems();
     }
 
     handleTabUpdate = (event) => {
@@ -48,6 +58,7 @@ export class CreateTrade {
     }
 
     createOffer() {
-
+        console.log('offer created');
+        console.log(this.rareItem);
     }
 }

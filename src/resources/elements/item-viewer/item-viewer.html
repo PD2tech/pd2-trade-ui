@@ -1,0 +1,44 @@
+<template>
+    <div id="item-viewer" class="row">
+        <div class="col-12 col-md-3 item-image">
+            <item-image></item-image>
+        </div>
+        <div class="col-12 col-md-6 text-center">
+            <div class="item-text">
+                <div class="item-name">
+                    ${item.name}
+                </div>
+                <div class="item-level" if.bind="item.itemLevel > 0">
+                    Item Level: ${item.itemLevel}
+                </div>
+                <div class="item-requirement" if.bind="item.levelRequirement > 0">
+                    Level Req: ${item.levelRequirement}
+                </div>
+                <div class="item-requirement" if.bind="item.minDamage > 0 && item.maxDamage > 0">
+                    Damage: ${item.minDamage} of ${item.maxDamage}
+                </div>
+                <div class="item-requirement" if.bind="item.defence > 0">
+                    Defence: ${item.defence}
+                </div>
+                <div class="item-requirement" if.bind="item.durability > 0 && item.maxDurability > 0">
+                    Durability: ${item.durability} of ${item.maxDurability}
+                </div>
+                <div class="item-requirement" if.bind="item.strengthRequirement > 0">
+                    Strength Req: ${item.strengthRequirement}
+                </div>
+                <div class="item-requirement" if.bind="item.dexterityRequirement > 0">
+                    Dexterity Req: ${item.dexterityRequirement}
+                </div>
+                <div class="item-corrupted" if.bind="item.corrupted">
+                    Corrupted
+                </div>
+                <div class="item-stat" repeat.for="stat of item.stats">
+                    <span class="d-flex justify-content-center align-items-center h-100">${stat.displayName | statReplacer:stat.value}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+
+        </div>
+    </div>
+</template>

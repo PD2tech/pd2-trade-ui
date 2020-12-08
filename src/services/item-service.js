@@ -16,4 +16,12 @@ export class ItemService {
     async getRarities() {
         return await this.apiService.doGet(this.path + '/Rarities');
     }
+
+    async getCurrencyItems() {
+        return await this.apiService.doGet(this.path + '/Search?expression=IsCurrency == true');
+    }
+
+    async getSubcategoryValues(category) {
+        return await this.apiService.doGet(this.path + '/SubCategory?category=' + category);
+    }
 }

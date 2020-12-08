@@ -14,41 +14,46 @@ export class CreateRareItem {
 
     async created() {
         this.itemCategories = await this.itemService.getCategories();
-        this.itemRarities = await this.itemService.getRarities();
     }
+
+    itemCategories;
+    subCategories;
 
     item = {
         name: '',
         levelRequirement: 0,
         strengthRequirement: 0,
         dexterityRequirement: 0,
-        itemLevel: 1,
-        type: '',
+        itemLevel: 0,
+        type: 'Rare',
         category: '',
+        subCategory: '',
         totalSockets: 0,
         minDamage: 0,
         maxDamage: 0,
         durability: 0,
-        maxDurability: 0
-    }
-
-    stats = [];
-
-    finishItem() {
-
+        maxDurability: 0,
+        defence: 0,
+        stats: []
     }
 
     handleNewStat(stat) {
         if (stat) {
-            let found = this.stats.find(x => x.id === stat.id);
+            let found = this.item.stats.find(x => x.id === stat.id);
             if (!found) {
-                this.stats.push(stat)
+                this.item.stats.push(stat)
             }
         }
     }
 
+    async handleCategoryChange() {
+        if (this.item.category) {
+            this.subCategories = await this.itemService.getSubcategoryValues(this.item.category);
+        }
+    }
+
     removeItemStat(stat) {
-        let index = this.stats.findIndex(x => x.id === stat.id);
-        this.stats.splice(index, 1);
+        let index = this.item.stats.findIndex(x => x.id === stat.id);
+        this.item.stats.splice(index, 1);
     }
 }

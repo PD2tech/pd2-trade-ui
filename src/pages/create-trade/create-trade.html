@@ -8,6 +8,9 @@
             <div element.ref="tabsElement" id="tabs" class="mb-3"></div>
 
             <div class="create-content">
+                <div class="set-area" show.bind="currentTab === 'Import Copied Item'">
+                    Coming Soon
+                </div>
                 <div class="set-area" show.bind="currentTab === 'Import from Stash'">
                     Coming Soon
                 </div>
@@ -15,7 +18,48 @@
                     Coming Soon
                 </div>
                 <div class="rare-area" show.bind="currentTab === 'Rare'">
-                    <create-rare-item></create-rare-item>
+                    <create-rare-item item.two-way="rareItem"></create-rare-item>
+                </div>
+                <div class="pricing-area">
+                    <div class="wanted-area row">
+                        <div class="col-8 mb-3">
+                            <mdc-select
+                                label="Item Wanted"
+                                value.bind="itemWanted"
+                                anchor-margin.bind="{top: 10}"
+                                outlined.bind="standardSelectOutlined"
+                                class="w-100 mb-3"
+                            >
+                                <mdc-list>
+                                    <mdc-list-item repeat.for="currency of currencyItems" value.bind="currency">${currency.name}</mdc-list-item>
+                                </mdc-list>
+                            </mdc-select>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <mdc-text-field
+                                type="number"
+                                label="Wanted Quantity"
+                                value.bind="itemWantedAmount"
+                                outlined.bind="true"
+                            ></mdc-text-field>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="d-inline-block mr-5">
+                            <mdc-text-field
+                                label="Account Name"
+                                value.bind="accountName"
+                                outlined.bind="true"
+                            ></mdc-text-field>
+                        </div>
+                        <div class="d-inline-block">
+                            <button mdc-button raised
+                                    class="create-button button-secondary"
+                                    click.delegate="createOffer()">
+                                Create Offer
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
