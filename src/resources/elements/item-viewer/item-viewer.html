@@ -6,39 +6,44 @@
         <div class="col-12 col-md-6 text-center">
             <div class="item-text">
                 <div class="item-name">
-                    ${item.name}
+                    ${offer.offeredItem.name}
                 </div>
-                <div class="item-level" if.bind="item.itemLevel > 0">
-                    Item Level: ${item.itemLevel}
+                <div class="item-level" if.bind="offer.offeredItem.itemLevel > 0">
+                    Item Level: ${offer.offeredItem.itemLevel}
                 </div>
-                <div class="item-requirement" if.bind="item.levelRequirement > 0">
-                    Level Req: ${item.levelRequirement}
+                <div class="item-requirement" if.bind="offer.offeredItem.levelRequirement > 0">
+                    Level Req: ${offer.offeredItem.levelRequirement}
                 </div>
-                <div class="item-requirement" if.bind="item.minDamage > 0 && item.maxDamage > 0">
-                    Damage: ${item.minDamage} of ${item.maxDamage}
+                <div class="item-requirement" if.bind="offer.offeredItem.minDamage > 0 && offer.offeredItem.maxDamage > 0">
+                    Damage: ${offer.offeredItem.minDamage} to ${offer.offeredItem.maxDamage}
                 </div>
-                <div class="item-requirement" if.bind="item.defence > 0">
-                    Defence: ${item.defence}
+                <div class="item-requirement" if.bind="offer.offeredItem.defence > 0">
+                    Defence: ${offer.offeredItem.defence}
                 </div>
-                <div class="item-requirement" if.bind="item.durability > 0 && item.maxDurability > 0">
-                    Durability: ${item.durability} of ${item.maxDurability}
+                <div class="item-requirement" if.bind="offer.offeredItem.durability > 0 && offer.offeredItem.maxDurability > 0">
+                    Durability: ${offer.offeredItem.durability} of ${offer.offeredItem.maxDurability}
                 </div>
-                <div class="item-requirement" if.bind="item.strengthRequirement > 0">
-                    Strength Req: ${item.strengthRequirement}
+                <div class="item-requirement" if.bind="offer.offeredItem.strengthRequirement > 0">
+                    Strength Req: ${offer.offeredItem.strengthRequirement}
                 </div>
-                <div class="item-requirement" if.bind="item.dexterityRequirement > 0">
-                    Dexterity Req: ${item.dexterityRequirement}
+                <div class="item-requirement" if.bind="offer.offeredItem.dexterityRequirement > 0">
+                    Dexterity Req: ${offer.offeredItem.dexterityRequirement}
                 </div>
-                <div class="item-corrupted" if.bind="item.corrupted">
+                <div class="item-corrupted" if.bind="offer.offeredItem.corrupted">
                     Corrupted
                 </div>
-                <div class="item-stat" repeat.for="stat of item.stats">
+                <div class="item-stat" repeat.for="stat of offer.offeredItem.stats">
                     <span class="d-flex justify-content-center align-items-center h-100">${stat.displayName | statReplacer:stat.value}</span>
                 </div>
             </div>
         </div>
         <div class="col-12 col-md-3">
-
+            <div class="price">
+                Price: ${offer.cost ? offer.cost + 'x' : ''} ${offer.wantedItem.name ? offer.wantedItem.name : 'Offer'}
+            </div>
+            <div class="price" if.bind="offer.note">
+                Note: ${offer.note}
+            </div>
         </div>
     </div>
 </template>

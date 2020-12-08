@@ -3,11 +3,11 @@
 @import '~devextreme/dist/css/dx.material.purple.dark.compact.css';
 @import '~@aurelia-mdc-web/all/mdc-all.scss';
 @import '~toastr/build/toastr.min.css';
-@import 'fontawesome';
 @import 'animations';
 @import 'mdc-overrides';
 @import 'dx-overrides';
 @import 'font-family';
+@import 'fontawesome';
 
 body {
     font-family: 'DiabloLight', var(--bs-font-sans-serif);

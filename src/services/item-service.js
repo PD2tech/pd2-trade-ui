@@ -8,20 +8,36 @@ export class ItemService {
     }
 
     path = 'Item';
+    categories;
+    rarities;
+    currencyItems;
 
     async getCategories() {
-        return await this.apiService.doGet(this.path + '/Categories');
+        if (!this.categories) {
+            this.categories = await this.apiService.doGet(this.path + '/Categories');
+        }
+        return this.categories;
     }
 
     async getRarities() {
-        return await this.apiService.doGet(this.path + '/Rarities');
+        if (!this.rarities) {
+            this.rarities = await this.apiService.doGet(this.path + '/Rarities');
+        }
+        return this.rarities;
     }
 
     async getCurrencyItems() {
-        return await this.apiService.doGet(this.path + '/Search?expression=IsCurrency == true');
+        if (!this.currencyItems) {
+            this.currencyItems = await this.apiService.doGet(this.path + '/Search?expression=IsCurrency == true');
+        }
+        return this.currencyItems;
     }
 
     async getSubcategoryValues(category) {
         return await this.apiService.doGet(this.path + '/SubCategory?category=' + category);
+    }
+
+    async getCategoryFromSubcategory(subcategory) {
+        return await this.apiService.doGet(this.path + '/FindItemCategory?itemSubCategory=' + subcategory)
     }
 }

@@ -3,11 +3,20 @@
         background: rgba(0, 0, 0, 0.3);
     }
 
+    .pricing-area {
+        padding: 20px 10%;
+    }
+
+    .item-string-input {
+        min-height: 350px;
+    }
+
     .create-button {
         height: 46px;
     }
 
     .create-content {
+        background: rgba(0, 0, 0, 0.3);
         padding: 20px 10%;
     }
 }

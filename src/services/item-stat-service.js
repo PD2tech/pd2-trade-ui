@@ -8,8 +8,12 @@ export class ItemStatService {
     }
 
     path = 'ItemStat';
+    stats;
 
     async getAllStats() {
-        return await this.apiService.doGet(this.path);
+        if (!this.stats) {
+            this.stats = await this.apiService.doGet(this.path);
+        }
+        return this.stats;
     }
 }

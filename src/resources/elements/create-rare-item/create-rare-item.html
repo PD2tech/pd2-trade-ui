@@ -10,6 +10,18 @@
                         outlined.bind="true"
                     ></mdc-text-field>
                 </div>
+                <mdc-select
+                    label="Item Rarity"
+                    value.bind="item.type"
+                    anchor-margin.bind="{top: 10}"
+                    outlined.bind="standardSelectOutlined"
+                    class="w-100 mb-3"
+                >
+                    <mdc-list>
+                        <mdc-list-item></mdc-list-item>
+                        <mdc-list-item repeat.for="rarity of itemRarities" value.bind="rarity">${rarity}</mdc-list-item>
+                    </mdc-list>
+                </mdc-select>
                 <div class="col-6 mb-3">
                     <mdc-select
                         label="Item Category"
@@ -17,7 +29,7 @@
                         anchor-margin.bind="{top: 10}"
                         outlined.bind="standardSelectOutlined"
                         class="w-100 mb-3"
-                        change.delegate="handleCategoryChange()"
+                        change.delegate="handleCategoryChange($event)"
                     >
                         <mdc-list>
                             <mdc-list-item></mdc-list-item>
@@ -152,9 +164,6 @@
                     </span>
                 </div>
             </div>
-        </div>
-        <div class="item-area">
-            <item-viewer item.bind="item"></item-viewer>
         </div>
     </div>
 </template>

@@ -1,6 +1,5 @@
 import {ItemService} from 'services/item-service';
-import Tabs from 'devextreme/ui/tabs';
-import {inject} from "aurelia-framework";
+import {inject, bindable} from "aurelia-framework";
 
 @inject(ItemService)
 export class CreateRareItem {
@@ -14,46 +13,46 @@ export class CreateRareItem {
 
     async created() {
         this.itemCategories = await this.itemService.getCategories();
+        this.itemRarities = await this.itemService.getRarities();
     }
 
     itemCategories;
     subCategories;
 
-    item = {
-        name: '',
-        levelRequirement: 0,
-        strengthRequirement: 0,
-        dexterityRequirement: 0,
-        itemLevel: 0,
+    @bindable item = {
+        name: null,
+        levelRequirement: null,
+        strengthRequirement: null,
+        dexterityRequirement: null,
+        itemLevel: null,
         type: 'Rare',
-        category: '',
-        subCategory: '',
-        totalSockets: 0,
-        minDamage: 0,
-        maxDamage: 0,
-        durability: 0,
-        maxDurability: 0,
-        defence: 0,
-        stats: []
+        category: null,
+        subCategory: null,
+        totalSockets: null,
+        minDamage: null,
+        maxDamage: null,
+        durability: null,
+        maxDurability: null,
+        defence: null
     }
+
+    @bindable stats = [];
 
     handleNewStat(stat) {
         if (stat) {
-            let found = this.item.stats.find(x => x.id === stat.id);
+            let found = this.stats.find(x => x.id === stat.id);
             if (!found) {
                 this.item.stats.push(stat)
             }
         }
     }
 
-    async handleCategoryChange() {
-        if (this.item.category) {
-            this.subCategories = await this.itemService.getSubcategoryValues(this.item.category);
-        }
+    async handleCategoryChange(event) {
+        this.subCategories = await this.itemService.getSubcategoryValues(event?.detail?.value);
     }
 
     removeItemStat(stat) {
-        let index = this.item.stats.findIndex(x => x.id === stat.id);
-        this.item.stats.splice(index, 1);
+        let index = this.stats.findIndex(x => x.id === stat.id);
+        this.stats.splice(index, 1);
     }
 }
