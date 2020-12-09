@@ -34,11 +34,11 @@
                         Coming Soon
                     </div>
                     <div class="rare-area" show.bind="currentTab === 'Rare, Magic, or Normal'">
-                        <create-rare-item item.two-way="tradeOffer.offeredItem" stats.two-way="tradeOffer.stats"></create-rare-item>
+                        <create-rare-item item.two-way="tradeOffer.offeredItem"></create-rare-item>
                     </div>
                 </div>
-                <div class="pricing-area mt-5">
-                    <div class="text-center">
+                <div class="pricing-area mt-5 mb-5">
+                    <div class="text-center mb-3">
                         <h4>Finalize Offer</h4>
                     </div>
                     <div class="item-area" if.bind="tradeOffer.offeredItem">

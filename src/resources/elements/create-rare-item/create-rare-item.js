@@ -36,13 +36,11 @@ export class CreateRareItem {
         defence: null
     }
 
-    @bindable stats = [];
-
     handleNewStat(stat) {
         if (stat) {
-            let found = this.stats.find(x => x.id === stat.id);
+            let found = this.item.stats.find(x => x.id === stat.id);
             if (!found) {
-                this.item.stats.push(stat)
+                this.item.stats.push(stat);
             }
         }
     }
@@ -52,7 +50,7 @@ export class CreateRareItem {
     }
 
     removeItemStat(stat) {
-        let index = this.stats.findIndex(x => x.id === stat.id);
-        this.stats.splice(index, 1);
+        let index = this.item.stats.findIndex(x => x.id === stat.id);
+        this.item.stats.splice(index, 1);
     }
 }

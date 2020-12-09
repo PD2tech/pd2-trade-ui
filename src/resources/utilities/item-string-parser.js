@@ -14,7 +14,13 @@ export class ItemStringParser {
     async parseItemJsonString(string) {
         this.allStats = await this.itemStatService.getAllStats();
         let item = {};
-        let json = JSON.parse(string);
+        let json = {};
+        try {
+            json = JSON.parse(string);
+        } catch (e) {
+            this.notification.error("Unable to parse item. Did you paste it correctly?");
+            return;
+        }
         item.name = json.name;
         item.itemLevel = json.iLevel;
         item.type = json.quality;

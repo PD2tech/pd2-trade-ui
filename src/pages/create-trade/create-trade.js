@@ -41,8 +41,7 @@ export class CreateTrade {
         offeredItemId: null,
         offeredItem: null,
         accountName: '',
-        note: '',
-        stats: []
+        note: ''
     }
 
     itemString;
