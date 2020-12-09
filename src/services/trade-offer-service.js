@@ -16,4 +16,12 @@ export class TradeOfferService {
     async search(data) {
         return await this.apiService.doPost(this.path + '/Search', data);
     }
+
+    async filter(filter) {
+        return await this.apiService.doGet(this.path);
+    }
+
+    async create(data) {
+        return await this.apiService.doPost(this.path, data);
+    }
 }

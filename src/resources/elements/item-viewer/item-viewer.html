@@ -1,9 +1,9 @@
 <template>
     <div id="item-viewer" class="row">
-        <div class="col-12 col-md-3 item-image">
+        <div class="col-12 col-md-3 item-image align-self-center">
             <item-image></item-image>
         </div>
-        <div class="col-12 col-md-6 text-center">
+        <div class="col-12 col-md-6 text-center align-self-center">
             <div class="item-text">
                 <div class="item-name">
                     ${offer.offeredItem.name}
@@ -37,9 +37,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-3">
+        <div class="col-12 col-md-3 align-self-center">
             <div class="price">
-                Price: ${offer.cost ? offer.cost + 'x' : ''} ${offer.wantedItem.name ? offer.wantedItem.name : 'Offer'}
+                Price: ${offer.cost ? offer.cost : ''} ${offer.wantedItem.name ? offer.wantedItem.name : 'Offer'}
             </div>
             <div class="price" if.bind="offer.note">
                 Note: ${offer.note}

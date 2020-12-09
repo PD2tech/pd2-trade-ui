@@ -4,6 +4,9 @@ export class DateFormatValueConverter {
         if (!value) {
             return;
         }
+        if (!format) {
+            format = 'MMM Do YYYY, h:mm:ss a';
+        }
         return moment.utc(value).local().format(format);
     }
 }

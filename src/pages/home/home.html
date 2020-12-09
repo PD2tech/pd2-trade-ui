@@ -144,8 +144,10 @@
                 </div>
             </div>
         </div>
-        <div class="result-container">
-
+        <div class="result-container mt-5">
+            <div class="item mb-4" repeat.for="offer of tradeOffers">
+                <item-viewer offer.bind="offer"></item-viewer>
+            </div>
         </div>
     </div>
 </template>

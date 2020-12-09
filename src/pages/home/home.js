@@ -3,19 +3,21 @@ import {SeasonService} from 'services/season-service';
 import {ItemService} from 'services/item-service';
 import {SessionService} from 'services/session-service';
 import {ItemStatService} from 'services/item-stat-service';
+import {TradeOfferService} from 'services/trade-offer-service';
 import {Router} from 'aurelia-router';
 import toastr from 'toastr'
 import './home.scss';
 
-@inject(SeasonService, ItemService, SessionService, Router, ItemStatService)
+@inject(SeasonService, ItemService, SessionService, Router, ItemStatService, TradeOfferService)
 export class Home {
 
-    constructor(seasonService, itemService, sessionService, router, itemStatService) {
+    constructor(seasonService, itemService, sessionService, router, itemStatService, tradeOfferService) {
         this.seasonService = seasonService;
         this.itemService = itemService;
         this.sessionService = sessionService;
         this.itemStatService = itemStatService;
         this.router = router;
+        this.tradeOfferService = tradeOfferService;
         this.notification = toastr;
     }
 
@@ -88,7 +90,9 @@ export class Home {
         }
     }
 
-    search() {
+    async search() {
+        this.tradeOffers = await this.tradeOfferService.filter();
+        console.log(this.tradeOffers);
 
     }
 

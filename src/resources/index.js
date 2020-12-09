@@ -5,6 +5,7 @@ export function configure(config) {
         PLATFORM.moduleName('./elements/authenticate-form/authenticate-form'),
         PLATFORM.moduleName('./elements/create-rare-item/create-rare-item'),
         PLATFORM.moduleName('./elements/error-list/error-list.html'),
+        PLATFORM.moduleName('./elements/footer/footer'),
         PLATFORM.moduleName('./elements/item-image/item-image'),
         PLATFORM.moduleName('./elements/item-viewer/item-viewer'),
         PLATFORM.moduleName('./elements/input-slider/input-slider'),

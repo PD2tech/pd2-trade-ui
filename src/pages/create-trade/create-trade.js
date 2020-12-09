@@ -3,17 +3,19 @@ import {SessionService} from 'services/session-service';
 import {Router} from 'aurelia-router';
 import {ItemService} from 'services/item-service';
 import {ItemStringParser} from "resources/utilities/item-string-parser";
+import {TradeOfferService} from 'services/trade-offer-service';
 import toastr from 'toastr'
 import './create-trade.scss';
 import Tabs from "devextreme/ui/tabs";
 
-@inject(SessionService, Router, ItemService, ItemStringParser)
+@inject(SessionService, Router, ItemService, ItemStringParser, TradeOfferService)
 export class CreateTrade {
-    constructor(sessionService, router, itemService, itemStringParser) {
+    constructor(sessionService, router, itemService, itemStringParser, tradeOfferService) {
         this.sessionService = sessionService;
         this.router = router;
         this.itemService = itemService;
         this.itemStringParser = itemStringParser;
+        this.tradeOfferService = tradeOfferService;
         this.notification = toastr;
     }
 
@@ -88,11 +90,17 @@ export class CreateTrade {
         this.currentTab = event.itemData.text;
     }
 
-    createOffer() {
+    async createOffer() {
         if (this.tradeOffer.wantedItem) {
             this.tradeOffer.wantedItemId = this.tradeOffer.wantedItem.id;
         }
-        console.log('offer created');
-        console.log(this.tradeOffer);
+        try {
+            await this.tradeOfferService.create(this.tradeOffer);
+            this.notification.success("Listing Created!");
+            this.router.navigate('manage-trades');
+        } catch(e) {
+            console.log(e);
+            this.notification.error("Failed to create listing");
+        }
     }
 }
