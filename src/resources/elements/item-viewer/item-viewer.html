@@ -44,6 +44,12 @@
             <div class="price" if.bind="offer.note">
                 Note: ${offer.note}
             </div>
+            <div class="price" if.bind="offer.accountName">
+                Seller: ${offer.accountName}
+            </div>
+            <div class="price" if.bind="offer.createdDate">
+                Posted: ${offer.createdDate | dateFormat}
+            </div>
         </div>
     </div>
 </template>
